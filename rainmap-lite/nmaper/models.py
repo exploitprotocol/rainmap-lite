@@ -12,8 +12,8 @@ class NmapProfile(models.Model):
         return self.alias_text
 
 class NmapScan(models.Model):
-    target_text = models.CharField(max_length=1024)
-    cmd_text = models.CharField(max_length=2048)
+    target_text = models.CharField(max_length=8192)
+    cmd_text = models.CharField(max_length=8192)
     email_text = models.EmailField(max_length=254)
     status_text = models.CharField(max_length=16, choices = SCAN_STATUS)
     start_date = models.DateTimeField('date started')
@@ -26,4 +26,3 @@ class ScanForm(ModelForm):
     class Meta:
         model = NmapScan
         fields = ['target_text', 'email_text']
-
